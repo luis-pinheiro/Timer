@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,8 +15,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -31,8 +34,9 @@
         }
 
         h1 {
+            font-family: 'Outfit', sans-serif;
             text-align: center;
-            color: #333;
+            color: #1E293B;
             margin-bottom: 30px;
             font-size: 28px;
             font-weight: 600;
@@ -45,7 +49,7 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #555;
+            color: #475569;
             font-weight: 500;
             font-size: 14px;
         }
@@ -58,34 +62,45 @@
         input[type="number"] {
             flex: 1;
             padding: 12px 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #E2E8F0;
             border-radius: 10px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.2s ease-out;
+            cursor: text;
+        }
+
+        input[type="number"]:hover {
+            border-color: #CBD5E1;
         }
 
         input[type="number"]:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         select {
             padding: 12px 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #E2E8F0;
             border-radius: 10px;
             font-size: 16px;
             background: white;
             cursor: pointer;
-            transition: border-color 0.3s;
+            transition: all 0.2s ease-out;
+        }
+
+        select:hover {
+            border-color: #CBD5E1;
         }
 
         select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .display {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border-radius: 15px;
             padding: 40px 20px;
@@ -96,13 +111,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
 
         .time-display {
             font-size: 72px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-family: 'Outfit', 'Courier New', monospace;
             letter-spacing: 2px;
             margin-bottom: 10px;
         }
@@ -128,20 +143,20 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s ease-out;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .btn-start {
-            background: #667eea;
+            background: #3B82F6;
             color: white;
         }
 
         .btn-start:hover:not(:disabled) {
-            background: #5568d3;
+            background: #2563EB;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
         .btn-pause {
@@ -185,18 +200,19 @@
             width: 20px;
             height: 20px;
             cursor: pointer;
+            accent-color: #3B82F6;
         }
 
         .notification-toggle label {
             margin: 0;
             cursor: pointer;
-            color: #666;
+            color: #475569;
             font-weight: 500;
         }
 
         .info-text {
             text-align: center;
-            color: #888;
+            color: #64748B;
             font-size: 13px;
             margin-top: 15px;
             line-height: 1.5;
@@ -214,6 +230,20 @@
         .time-display.finished {
             animation: pulse 0.5s infinite;
         }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .time-display.finished {
+                animation: none;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -223,8 +253,8 @@
         <div class="input-group">
             <label for="timerInput">Set Timer</label>
             <div class="input-wrapper">
-                <input type="number" id="timerInput" min="0" max="9999" value="5" placeholder="Enter time">
-                <select id="timeUnit">
+                <input type="number" id="timerInput" min="0" max="9999" value="5" placeholder="Enter time" aria-label="Timer duration">
+                <select id="timeUnit" aria-label="Time unit">
                     <option value="seconds">Seconds</option>
                     <option value="minutes">Minutes</option>
                     <option value="hours">Hours</option>
@@ -232,23 +262,23 @@
             </div>
         </div>
 
-        <div class="display">
-            <div class="time-display" id="timeDisplay">00:00</div>
+        <div class="display" role="timer" aria-live="polite" aria-atomic="true">
+            <div class="time-display" id="timeDisplay" aria-label="Time remaining">00:00</div>
             <div class="status" id="status">Ready</div>
         </div>
 
-        <div class="button-group">
-            <button class="btn-start" id="startBtn" onclick="startTimer()">Start</button>
-            <button class="btn-pause" id="pauseBtn" onclick="pauseTimer()" disabled>Pause</button>
-            <button class="btn-reset" id="resetBtn" onclick="resetTimer()">Reset</button>
+        <div class="button-group" role="group" aria-label="Timer controls">
+            <button class="btn-start" id="startBtn" onclick="startTimer()" aria-label="Start timer">Start</button>
+            <button class="btn-pause" id="pauseBtn" onclick="pauseTimer()" disabled aria-label="Pause timer">Pause</button>
+            <button class="btn-reset" id="resetBtn" onclick="resetTimer()" aria-label="Reset timer">Reset</button>
         </div>
 
         <div class="notification-toggle">
-            <input type="checkbox" id="notifyCheckbox" checked>
+            <input type="checkbox" id="notifyCheckbox" checked aria-describedby="notifyInfo">
             <label for="notifyCheckbox">Enable notifications every 5 minutes</label>
         </div>
 
-        <div class="info-text">
+        <div class="info-text" id="notifyInfo">
             💡 You'll receive notifications every 5 minutes during the countdown
         </div>
     </div>
