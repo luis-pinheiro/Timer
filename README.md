@@ -12,6 +12,8 @@ A simple, elegant countdown timer application available as both a web app and na
 
 ## Screenshots
 
+![Timer App Interface](screenshot.png)
+
 The timer features a clean, modern interface with:
 - Large, easy-to-read countdown display
 - Simple controls (Start, Pause, Reset)
@@ -107,6 +109,13 @@ Timer/
 ├── main.js              # Electron main process
 ├── preload.js           # Secure IPC bridge
 ├── package.json         # Dependencies and build config
+├── icon.svg             # Source icon (SVG format)
+├── screenshot.png       # App screenshot for README
+├── build/               # Generated platform icons
+│   ├── icon.ico        # Windows icon
+│   ├── icon.icns       # macOS icon
+│   ├── icon.png        # Linux icon
+│   └── icon-*.png      # Various PNG sizes
 ├── CLAUDE.md            # Development documentation
 └── README.md            # This file
 ```

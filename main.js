@@ -13,6 +13,7 @@ function createWindow() {
             contextIsolation: true
         },
         title: 'Timer',
+        icon: path.join(__dirname, 'build/icon.png'),
         resizable: true,
         minimizable: true,
         maximizable: true
@@ -37,7 +38,7 @@ ipcMain.on('notify', (event, data) => {
         const notification = new Notification({
             title: title || 'Timer',
             body: body || '',
-            icon: path.join(__dirname, 'timer_app.html'), // You can add a custom icon later
+            icon: path.join(__dirname, 'build/icon.png'),
             silent: false
         });
 

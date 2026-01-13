@@ -1,0 +1,35 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circle -->
+  <circle cx="256" cy="276" r="180" fill="url(#timerGradient)" stroke="none"/>
+
+  <!-- Inner Circle (clock face) -->
+  <circle cx="256" cy="276" r="150" fill="white" opacity="0.95"/>
+
+  <!-- Hour Markers -->
+  <circle cx="256" cy="156" r="8" fill="url(#timerGradient)"/>
+  <circle cx="256" cy="396" r="8" fill="url(#timerGradient)"/>
+  <circle cx="376" cy="276" r="8" fill="url(#timerGradient)"/>
+  <circle cx="136" cy="276" r="8" fill="url(#timerGradient)"/>
+
+  <!-- Timer Hand (pointing to 12 o'clock, like a countdown starting) -->
+  <line x1="256" y1="276" x2="256" y2="166" stroke="url(#accentGradient)" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Center Dot -->
+  <circle cx="256" cy="276" r="12" fill="url(#accentGradient)"/>
+
+  <!-- Top Timer Button -->
+  <rect x="216" y="56" width="80" height="32" rx="8" fill="url(#timerGradient)"/>
+  <rect x="226" y="56" width="60" height="8" rx="4" fill="white" opacity="0.9"/>
+</svg>
